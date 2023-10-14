@@ -16,6 +16,7 @@ public class QuickExpMod {
             mul = (mul.multiply(mul)).mod(m);
         }
 
+
         return result;
     }
 }
