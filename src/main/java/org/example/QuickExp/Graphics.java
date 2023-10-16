@@ -80,12 +80,12 @@ public class Graphics {
     private XYDataset createDS(List<BigInteger> aList, List<BigInteger> bList,
                                List<BigInteger> aTimes, List<BigInteger> bTimes){
 
-        XYSeries aSeries = new XYSeries("a");
+        XYSeries aSeries = new XYSeries("Длина числа a в битах");
         for(int i=0; i<aList.size();i++){
             aSeries.add(aList.get(i).toString(2).length(), aTimes.get(i));
         }
 
-        XYSeries bSeries = new XYSeries("b");
+        XYSeries bSeries = new XYSeries("Длина числа b в битах");
         for(int i=0;i<bList.size();i++){
             bSeries.add(bList.get(i).toString(2).length(), bTimes.get(i));
         }
@@ -102,8 +102,8 @@ public class Graphics {
     private JFreeChart createChart(XYDataset ds){
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "График времени работы алгоритма",
-                "Длина числа",
-                "Время выполнения алгоритма",
+                "Длина числа в битах",
+                "Время выполнения алгоритма в наносекундах",
                 ds,
                 PlotOrientation.VERTICAL,
                 true, true, false
@@ -111,6 +111,7 @@ public class Graphics {
 
         XYPlot plot = chart.getXYPlot();
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+
 
         for(int i=0; i<ds.getSeriesCount();i++){
             renderer.setSeriesPaint(i, colors[i]);
@@ -122,9 +123,10 @@ public class Graphics {
         plot.setRangeGridlinesVisible(false);
         plot.setDomainGridlinesVisible(false);
 
+
         chart.getLegend().setFrame(BlockBorder.NONE);
 
-        chart.setTitle(new TextTitle("Время выполнения алгоритма в зависимости от длины числа",
+        chart.setTitle(new TextTitle("Время выполнения алгоритма в зависимости от битовой длины числа",
                         new Font("Serif", Font.BOLD, 18)
                 )
         );
@@ -138,22 +140,22 @@ public class Graphics {
                                List<BigInteger> aTimes, List<BigInteger> bTimes,
                                 List<BigInteger> aTimes2, List<BigInteger> bTimes2){
 
-        XYSeries aSeries = new XYSeries("a (a^b%m)");
+        XYSeries aSeries = new XYSeries("Длина числа a в битах (a^b%m)");
         for(int i=0; i<aList.size();i++){
             aSeries.add(aList.get(i).toString(2).length(), aTimes.get(i));
         }
 
-        XYSeries bSeries = new XYSeries("b (a^b%m)");
+        XYSeries bSeries = new XYSeries("Длина числа b в битах (a^b%m)");
         for(int i=0;i<bList.size();i++){
             bSeries.add(bList.get(i).toString(2).length(), bTimes.get(i));
         }
 
-        XYSeries aSeries2 = new XYSeries("a ((a^b)%m)");
+        XYSeries aSeries2 = new XYSeries("Длина числа a в битах ((a^b)%m)");
         for(int i=0; i<aList.size();i++){
             aSeries2.add(aList.get(i).toString(2).length(), aTimes2.get(i));
         }
 
-        XYSeries bSeries2 = new XYSeries("b ((a^b)%m)");
+        XYSeries bSeries2 = new XYSeries("Длина числа b в битах  ((a^b)%m)");
         for(int i=0;i<bList.size();i++){
             bSeries2.add(bList.get(i).toString(2).length(), bTimes2.get(i));
         }
