@@ -13,28 +13,22 @@ public class Main2 {
 
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Введите битовую длину числа a: ");
-        BigInteger aLength = sc.nextBigInteger();
-        System.out.println("Введите битовую длину числа b: ");
-        BigInteger bLength = sc.nextBigInteger();
+        System.out.println("Введите битовую длину числа: ");
+        BigInteger length = sc.nextBigInteger();
 
         Random rand = new Random();
         System.out.println("Введите количество чисел: ");
         int n = sc.nextInt();
 
-        List<BigInteger> aList = new ArrayList<>();
-        List<BigInteger> bList = new ArrayList<>();
+        List<BigInteger> lengthList = new ArrayList<>();
+        List<BigInteger> fastAlgDurs = new ArrayList<>();
 
-        List<BigInteger> aTimes = new ArrayList<>();
-        List<BigInteger> bTimes = new ArrayList<>();
-
-        List<BigInteger> aTimes2 = new ArrayList<>();
-        List<BigInteger> bTimes2 = new ArrayList<>();
+        List<BigInteger> longAlgDurs = new ArrayList<>();
 
         for(int i=0; i<n;i++){
-            BigInteger a = rand.rand(aLength);
-            BigInteger b = rand.rand(bLength);
-            BigInteger m = rand.rand(aLength);
+            BigInteger a = rand.rand(length);
+            BigInteger b = rand.rand(length);
+            BigInteger m = rand.rand(length);
 
             BigInteger startTime = new BigInteger(String.valueOf(System.nanoTime()));
 
@@ -42,13 +36,11 @@ public class Main2 {
 
             BigInteger endTime = new BigInteger(String.valueOf(System.nanoTime()));
 
-            aList.add(a);
-            bList.add(b);
+            lengthList.add(BigInteger.valueOf(a.toString(2).length()));
 
             BigInteger time = (endTime.subtract(startTime));
 
-            aTimes.add(time);
-            bTimes.add(time);
+            fastAlgDurs.add(time);
 
             startTime = new BigInteger(String.valueOf(System.nanoTime()));
 
@@ -59,19 +51,16 @@ public class Main2 {
 
             time = (endTime.subtract(startTime));
 
-            aTimes2.add(time);
-            bTimes2.add(time);
+            longAlgDurs.add(time);
 
 
             System.out.println("============\n" +
                     a + " ^ " + b + " % " + m + " = " + answer);
 
-            aLength = aLength.add(BigInteger.valueOf(1));
-            bLength = bLength.add(BigInteger.valueOf(1));
+            length = length.add(BigInteger.valueOf(1));
         }
 
-        Graphics graphics = new Graphics.GraphicsBuilder(aList, bList, aTimes, bTimes)
-                .addSecond(aTimes2, bTimes2).build();
-        graphics.showGraphics2();
+        Graphics graphics = new Graphics(lengthList, fastAlgDurs, longAlgDurs);
+        graphics.showGraphics();
     }
 }

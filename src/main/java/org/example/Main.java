@@ -14,25 +14,22 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Введите битовую длину числа a: ");
-        BigInteger aLength = sc.nextBigInteger();
-        System.out.println("Введите битовую длину числа b: ");
-        BigInteger bLength = sc.nextBigInteger();
+        System.out.println("Введите битовую длину числа");
+        BigInteger length = sc.nextBigInteger();
+
 
         Random rand = new Random();
         System.out.println("Введите количество чисел: ");
         int n = sc.nextInt();
 
-        List<BigInteger> aList = new ArrayList<>();
-        List<BigInteger> bList = new ArrayList<>();
+        List<BigInteger> lengthList = new ArrayList<>();
+        List<BigInteger> fastAlgDurs = new ArrayList<>();
 
-        List<BigInteger> aTimes = new ArrayList<>();
-        List<BigInteger> bTimes = new ArrayList<>();
 
         for(int i=0; i<n;i++){
-            BigInteger a = rand.rand(aLength);
-            BigInteger b = rand.rand(bLength);
-            BigInteger m = rand.rand(aLength);
+            BigInteger a = rand.rand(length);
+            BigInteger b = rand.rand(length);
+            BigInteger m = rand.rand(length);
 
             BigInteger startTime = new BigInteger(String.valueOf(System.nanoTime()));
 
@@ -40,25 +37,19 @@ public class Main {
 
             BigInteger endTime = new BigInteger(String.valueOf(System.nanoTime()));
 
-            aList.add(a);
-            bList.add(b);
+            lengthList.add(BigInteger.valueOf(a.toString(2).length()));
 
             BigInteger time = (endTime.subtract(startTime));
-//            System.out.println("start time = " + startTime);
-//            System.out.println("end time = " + endTime);
-//            System.out.println("time = " + time);
 
-            aTimes.add(time);
-            bTimes.add(time);
+            fastAlgDurs.add(time);
 
             System.out.println("============\n" +
                     a + " ^ " + b + " % " + m + " = " + answer);
 
-            aLength = aLength.add(BigInteger.TEN);
-            bLength = bLength.add(BigInteger.valueOf(15));
+            length = length.add(BigInteger.TEN);
         }
 
-        Graphics graphics = new Graphics.GraphicsBuilder(aList, bList, aTimes, bTimes).build();
+        Graphics graphics = new Graphics(lengthList, fastAlgDurs, null);
         graphics.showGraphics();
     }
 
