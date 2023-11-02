@@ -1,5 +1,5 @@
 import quickExpTask.QuickExp.QuickEx;
-import quickExpTask.QuickExp.Random;
+import Random.Random;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,6 @@
-package quickExpTask.QuickExp;
+package Random;
+
+import quickExpTask.QuickExp.QuickEx;
 
 import java.math.BigInteger;
 
@@ -15,6 +17,12 @@ public class Random {
         BigInteger min = (QuickEx.quickExp(new BigInteger(String.valueOf(2)), length)).divide(BigInteger.valueOf(2));
         BigInteger max = QuickEx.quickExp(new BigInteger(String.valueOf(2)), length).subtract(BigInteger.valueOf(1));
 
+        max = max.subtract(min);
+        seed = ((((seed.multiply(a)).add(c)).mod(m)).mod(max)).add(min);
+        return seed;
+    }
+
+    public BigInteger rand(BigInteger min, BigInteger max){
         max = max.subtract(min);
         seed = ((((seed.multiply(a)).add(c)).mod(m)).mod(max)).add(min);
         return seed;
