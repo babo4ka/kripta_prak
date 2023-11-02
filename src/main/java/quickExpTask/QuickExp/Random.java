@@ -1,7 +1,6 @@
-package org.example.QuickExp;
+package quickExpTask.QuickExp;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 public class Random {
 

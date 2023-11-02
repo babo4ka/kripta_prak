@@ -1,8 +1,8 @@
-package org.example;
+package quickExpTask;
 
-import org.example.QuickExp.Graphics;
-import org.example.QuickExp.QuickEx;
-import org.example.QuickExp.Random;
+import quickExpTask.QuickExp.Graphics;
+import quickExpTask.QuickExp.QuickEx;
+import quickExpTask.QuickExp.Random;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

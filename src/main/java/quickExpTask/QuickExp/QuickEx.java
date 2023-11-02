@@ -1,4 +1,4 @@
-package org.example.QuickExp;
+package quickExpTask.QuickExp;
 
 import java.math.BigInteger;
 

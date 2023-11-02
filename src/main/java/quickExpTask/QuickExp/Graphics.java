@@ -1,4 +1,4 @@
-package org.example.QuickExp;
+package quickExpTask.QuickExp;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

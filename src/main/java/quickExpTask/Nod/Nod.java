@@ -1,14 +1,13 @@
-package org.example;
+package quickExpTask.Nod;
 
 import java.math.BigInteger;
-import java.util.Scanner;
 
-public final class Nod {
+public class Nod {
 
     public static BigInteger nod(BigInteger a, BigInteger b){
 
-        while(a.longValue() != 0 && b.longValue() != 0){
-            if(a.longValue() > b.longValue()){
+        while (!a.equals(BigInteger.valueOf(0)) && !b.equals(BigInteger.valueOf(0))){
+            if(a.compareTo(b) == 1){
                 a = a.mod(b);
             }else{
                 b = b.mod(a);
