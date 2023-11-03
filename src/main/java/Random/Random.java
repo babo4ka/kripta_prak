@@ -16,10 +16,7 @@ public class Random {
     public BigInteger rand(BigInteger length){
         BigInteger min = (QuickBigMath.quickExp(new BigInteger(String.valueOf(2)), length)).divide(BigInteger.valueOf(2));
         BigInteger max = QuickBigMath.quickExp(new BigInteger(String.valueOf(2)), length).subtract(BigInteger.valueOf(1));
-
-        max = max.subtract(min);
-        seed = ((((seed.multiply(a)).add(c)).mod(m)).mod(max)).add(min);
-        return seed;
+        return rand(min, max);
     }
 
     public BigInteger rand(BigInteger min, BigInteger max){
