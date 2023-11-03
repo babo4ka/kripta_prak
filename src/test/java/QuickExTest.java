@@ -1,4 +1,4 @@
-import quickExpTask.QuickExp.QuickEx;
+import quickExpTask.QuickExp.QuickBigMath;
 import Random.Random;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,38 +12,38 @@ public class QuickExTest {
     @Test
     void testQuickExp(){
         Assertions.assertEquals(new BigInteger(String.valueOf(4)),
-                QuickEx.quickExp(new BigInteger(String.valueOf(2)), new BigInteger(String.valueOf(2))));
+                QuickBigMath.quickExp(new BigInteger(String.valueOf(2)), new BigInteger(String.valueOf(2))));
 
         Assertions.assertEquals(new BigInteger(String.valueOf(125)),
-                QuickEx.quickExp(new BigInteger(String.valueOf(5)), new BigInteger(String.valueOf(3))));
+                QuickBigMath.quickExp(new BigInteger(String.valueOf(5)), new BigInteger(String.valueOf(3))));
 
         Assertions.assertEquals(new BigInteger(String.valueOf(225)),
-                QuickEx.quickExp(new BigInteger(String.valueOf(15)), new BigInteger(String.valueOf(2))));
+                QuickBigMath.quickExp(new BigInteger(String.valueOf(15)), new BigInteger(String.valueOf(2))));
 
         Assertions.assertEquals(new BigInteger(String.valueOf(1024)),
-                QuickEx.quickExp(new BigInteger(String.valueOf(4)), new BigInteger(String.valueOf(5))));
+                QuickBigMath.quickExp(new BigInteger(String.valueOf(4)), new BigInteger(String.valueOf(5))));
     }
 
     @Test
     void testQuickExpN(){
         Assertions.assertFalse(new BigInteger(String.valueOf(4))
-                .equals(QuickEx.quickExp(new BigInteger(String.valueOf(2)), new BigInteger(String.valueOf(6)))));
+                .equals(QuickBigMath.quickExp(new BigInteger(String.valueOf(2)), new BigInteger(String.valueOf(6)))));
 
         Assertions.assertFalse(new BigInteger(String.valueOf(100))
-                .equals(QuickEx.quickExp(new BigInteger(String.valueOf(25)), new BigInteger(String.valueOf(2)))));
+                .equals(QuickBigMath.quickExp(new BigInteger(String.valueOf(25)), new BigInteger(String.valueOf(2)))));
 
         Assertions.assertFalse(new BigInteger(String.valueOf(15))
-                .equals(QuickEx.quickExp(new BigInteger(String.valueOf(2)), new BigInteger(String.valueOf(2)))));
+                .equals(QuickBigMath.quickExp(new BigInteger(String.valueOf(2)), new BigInteger(String.valueOf(2)))));
 
         Assertions.assertFalse(new BigInteger(String.valueOf(60))
-                .equals(QuickEx.quickExp(new BigInteger(String.valueOf(3)), new BigInteger(String.valueOf(8)))));
+                .equals(QuickBigMath.quickExp(new BigInteger(String.valueOf(3)), new BigInteger(String.valueOf(8)))));
 
     }
 
     @Test
     void quickExpModTest(){
         Assertions.assertEquals(new BigInteger(String.valueOf(6)),
-                QuickEx.quickExpMod(new BigInteger(String.valueOf(3)), new BigInteger(String.valueOf(45)),
+                QuickBigMath.quickExpMod(new BigInteger(String.valueOf(3)), new BigInteger(String.valueOf(45)),
                         new BigInteger(String.valueOf(7))));
     }
 
@@ -54,8 +54,8 @@ public class QuickExTest {
         BigInteger b = new BigInteger(String.valueOf(23));
         BigInteger m = new BigInteger(String.valueOf(13));
 
-        Assertions.assertEquals(QuickEx.quickExp(a,b).mod(m),
-                QuickEx.quickExpMod(a,b,m));
+        Assertions.assertEquals(QuickBigMath.quickExp(a,b).mod(m),
+                QuickBigMath.quickExpMod(a,b,m));
     }
 
     @Test

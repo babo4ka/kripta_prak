@@ -1,7 +1,7 @@
 package quickExpTask;
 
 import quickExpTask.QuickExp.Graphics;
-import quickExpTask.QuickExp.QuickEx;
+import quickExpTask.QuickExp.QuickBigMath;
 import Random.Random;
 
 import java.math.BigInteger;
@@ -32,7 +32,7 @@ public class Main2 {
 
             BigInteger startTime = new BigInteger(String.valueOf(System.nanoTime()));
 
-            BigInteger answer = QuickEx.quickExpMod(a, b, m);
+            BigInteger answer = QuickBigMath.quickExpMod(a, b, m);
 
             BigInteger endTime = new BigInteger(String.valueOf(System.nanoTime()));
 
@@ -44,7 +44,7 @@ public class Main2 {
 
             startTime = new BigInteger(String.valueOf(System.nanoTime()));
 
-            answer = QuickEx.quickExp(a, b).mod(m);
+            answer = QuickBigMath.quickExp(a, b).mod(m);
 
             endTime = new BigInteger(String.valueOf(System.nanoTime()));
 
