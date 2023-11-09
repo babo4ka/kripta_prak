@@ -14,7 +14,7 @@ public class Main2 {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите битовую длину числа: ");
-        BigInteger length = sc.nextBigInteger();
+        int length = sc.nextInt();
 
         Random rand = new Random();
         System.out.println("Введите количество чисел: ");
@@ -57,7 +57,7 @@ public class Main2 {
             System.out.println("============\n" +
                     a + " ^ " + b + " % " + m + " = " + answer);
 
-            length = length.add(BigInteger.valueOf(1));
+            length++;
         }
 
         Graphics graphics = new Graphics(lengthList, fastAlgDurs, longAlgDurs);

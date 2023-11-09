@@ -54,7 +54,7 @@ public class PrimeTest {
     void testDifferentRounds(){
         Random r = new Random();
         for(int i=0;i<25;i++){
-            BigInteger a = r.rand(BigInteger.valueOf(25));
+            BigInteger a = r.rand(25);
             Assertions.assertEquals(PrimeChecker.isPrime(a, r.rand(BigInteger.TEN, BigInteger.valueOf(45))),
                     PrimeChecker.isPrime(a, r.rand(BigInteger.valueOf(50), BigInteger.valueOf(100))));
         }

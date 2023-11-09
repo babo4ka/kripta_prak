@@ -60,14 +60,12 @@ public class QuickExTest {
 
     @Test
     void testRandom(){
-        BigInteger [] lengths = {new BigInteger(String.valueOf(10)), new BigInteger(String.valueOf(24)),
-                new BigInteger(String.valueOf(105)), new BigInteger(String.valueOf(156)),
-                new BigInteger(String.valueOf(174))};
+        int [] lengths = {10, 24, 105, 156, 174};
 
         Random rand = new Random();
 
-        Arrays.stream(lengths).toList().forEach(a ->
+        Arrays.stream(lengths).forEach(a ->
                 Assertions.assertEquals(a,
-                        new BigInteger(String.valueOf(rand.rand(a).toString(2).length()))));
+                        rand.rand(a).toString(2).length()));
     }
 }
