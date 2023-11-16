@@ -1,5 +1,5 @@
-import Random.Random;
-import millerRabinTask.PrimeChecker;
+import random.Random;
+import millerRabinTask.PrimeNumbers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,14 +12,19 @@ public class PrimeTest {
 
     @Test
     void sipmleTest(){
-        Assertions.assertFalse(PrimeChecker.isPrime(BigInteger.ONE, null));
-        Assertions.assertFalse(PrimeChecker.isPrime(BigInteger.ONE, BigInteger.valueOf(15)));
+        PrimeNumbers pn = new PrimeNumbers();
 
-        Assertions.assertEquals(false, PrimeChecker.isPrime(BigInteger.valueOf(156), null));
+        Assertions.assertFalse(pn.isPrime(BigInteger.ONE));
+        Assertions.assertEquals(false, pn.isPrime(BigInteger.valueOf(156)));
+        Assertions.assertEquals(true, pn.isPrime(BigInteger.valueOf(9929)));
 
-        Assertions.assertEquals(false, PrimeChecker.isPrime(BigInteger.valueOf(177), BigInteger.valueOf(5)));
 
-        Assertions.assertEquals(true, PrimeChecker.isPrime(BigInteger.valueOf(9929), null));
+        pn.setRounds(BigInteger.valueOf(15));
+        Assertions.assertFalse(pn.isPrime(BigInteger.ONE));
+
+
+        pn.setRounds(BigInteger.valueOf(5));
+        Assertions.assertEquals(false, pn.isPrime(BigInteger.valueOf(177)));
     }
 
 
@@ -43,8 +48,9 @@ public class PrimeTest {
 
         for(String s : lines){
             String[] args = s.split(" ");
+            PrimeNumbers checker = args.length<2?new PrimeNumbers():new PrimeNumbers(new BigInteger(args[1]));
             Assertions.assertEquals(expResults[i],
-                    PrimeChecker.isPrime(new BigInteger(args[0]), args.length>1?new BigInteger(args[1]):null));
+                    checker.isPrime(new BigInteger(args[0])));
             i++;
         }
 
@@ -53,10 +59,14 @@ public class PrimeTest {
     @Test
     void testDifferentRounds(){
         Random r = new Random();
+        PrimeNumbers checker1 = new PrimeNumbers();
+        PrimeNumbers checker2 = new PrimeNumbers();
         for(int i=0;i<25;i++){
             BigInteger a = r.rand(25);
-            Assertions.assertEquals(PrimeChecker.isPrime(a, r.rand(BigInteger.TEN, BigInteger.valueOf(45))),
-                    PrimeChecker.isPrime(a, r.rand(BigInteger.valueOf(50), BigInteger.valueOf(100))));
+            checker1.setRounds(r.rand(BigInteger.TEN, BigInteger.valueOf(45)));
+            checker2.setRounds(r.rand(BigInteger.valueOf(50), BigInteger.valueOf(100)));
+
+            Assertions.assertEquals(checker1.isPrime(a), checker2.isPrime(a));
         }
     }
 }

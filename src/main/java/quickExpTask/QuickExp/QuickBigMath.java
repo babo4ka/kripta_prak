@@ -55,7 +55,7 @@ public class QuickBigMath {
     public static BigInteger nod(BigInteger a, BigInteger b){
 
         while (!a.equals(BigInteger.valueOf(0)) && !b.equals(BigInteger.valueOf(0))){
-            if(a.compareTo(b) == 1){
+            if(a.compareTo(b) > 0){
                 a = a.mod(b);
             }else{
                 b = b.mod(a);

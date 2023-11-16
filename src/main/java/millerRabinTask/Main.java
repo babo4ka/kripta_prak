@@ -1,7 +1,5 @@
 package millerRabinTask;
 
-import quickExpTask.QuickExp.QuickBigMath;
-
 import java.io.*;
 import java.math.BigInteger;
 import java.util.*;
@@ -20,8 +18,8 @@ public class Main {
                     System.out.println("Введите число и если хотите количество раундов");
                     String input = sc.next();
                     String[] argums = input.split(" ");
-                    boolean isPrime = PrimeChecker.isPrime(new BigInteger(argums[0]),
-                            argums.length<2?null:new BigInteger(argums[1]));
+                    PrimeNumbers checker = argums.length<2?new PrimeNumbers():new PrimeNumbers(new BigInteger(argums[1]));
+                    boolean isPrime = checker.isPrime(new BigInteger(argums[0]));
                     System.out.println(input + " " + (isPrime?"возможно простое":"составное"));
                 }
 
@@ -66,7 +64,8 @@ public class Main {
 
         while((line = bReader.readLine()) != null){
             String[] args = line.split(" ");
-            isPrime = PrimeChecker.isPrime(new BigInteger(args[0]), args.length<2?null:new BigInteger(args[1]));
+            PrimeNumbers checker = args.length<2?new PrimeNumbers():new PrimeNumbers(new BigInteger(args[1]));
+            isPrime = checker.isPrime(new BigInteger(args[0]));
             result.put(line, isPrime);
         }
 

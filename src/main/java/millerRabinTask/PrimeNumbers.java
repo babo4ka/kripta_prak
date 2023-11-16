@@ -1,15 +1,24 @@
 package millerRabinTask;
 
-import Random.Random;
+import random.Random;
 import quickExpTask.QuickExp.QuickBigMath;
 
 import java.math.BigInteger;
 
-public class PrimeChecker {
+public class PrimeNumbers {
 
-    public static boolean isPrime(BigInteger p, BigInteger n){
-        if(n == null){
-            n = QuickBigMath.bigLog2(p);
+    private BigInteger rounds;
+
+    public PrimeNumbers(BigInteger rounds){this.rounds = rounds;}
+    public PrimeNumbers(){this.rounds = null;}
+
+    public void setRounds(BigInteger rounds){this.rounds = rounds;}
+
+
+
+    public boolean isPrime(BigInteger p){
+        if(this.rounds == null){
+            this.rounds = QuickBigMath.bigLog2(p);
         }
 
 
@@ -27,7 +36,7 @@ public class PrimeChecker {
         }
 
         Random r = new Random();
-        for(BigInteger i = BigInteger.ZERO; i.compareTo(n) < 0; i = i.add(BigInteger.ONE)){
+        for(BigInteger i = BigInteger.ZERO; i.compareTo(this.rounds) < 0; i = i.add(BigInteger.ONE)){
             BigInteger a = r.rand(BigInteger.TWO, p.subtract(BigInteger.TWO));
 
             BigInteger x = QuickBigMath.quickExpMod(a, t, p);
@@ -43,5 +52,16 @@ public class PrimeChecker {
         }
 
         return true;
+    }
+
+
+    private final Random random = new Random();
+    public BigInteger generatePrime(int length){
+        BigInteger result = this.random.rand(length);
+
+        while(!this.isPrime(result)){
+            result = this.random.rand(length);
+        }
+        return result;
     }
 }

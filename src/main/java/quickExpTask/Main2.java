@@ -2,7 +2,7 @@ package quickExpTask;
 
 import quickExpTask.QuickExp.Graphics;
 import quickExpTask.QuickExp.QuickBigMath;
-import Random.Random;
+import random.Random;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

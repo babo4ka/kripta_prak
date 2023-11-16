@@ -1,4 +1,4 @@
-package Random;
+package random;
 
 import quickExpTask.QuickExp.QuickBigMath;
 
@@ -10,7 +10,7 @@ public class Random {
     private final BigInteger a = new BigInteger(String.valueOf(1664525));
     private final BigInteger c = new BigInteger(String.valueOf(1013904223));
 
-    private BigInteger seed = new BigInteger(String.valueOf(1));
+    private BigInteger seed = BigInteger.ONE;
 
 
     public BigInteger rand(int length){
@@ -20,7 +20,7 @@ public class Random {
     }
 
     public BigInteger rand(BigInteger min, BigInteger max){
-        max = max.subtract(min);
+        max = max.add(BigInteger.ONE).subtract(min);
         seed = seed.multiply(a).add(c).mod(m);
         return seed.mod(max).add(min);
     }
