@@ -37,7 +37,7 @@ public class PrimeNumbers {
 
         Random r = new Random();
         for(BigInteger i = BigInteger.ZERO; i.compareTo(this.rounds) < 0; i = i.add(BigInteger.ONE)){
-            BigInteger a = r.rand(BigInteger.TWO, p.subtract(BigInteger.TWO));
+            BigInteger a = r.rand(BigInteger.ONE, p.subtract(BigInteger.ONE));
 
             BigInteger x = QuickBigMath.quickExpMod(a, t, p);
             if(x.compareTo(BigInteger.ONE) == 0 || x.compareTo(p.subtract(BigInteger.ONE)) == 0)continue;
