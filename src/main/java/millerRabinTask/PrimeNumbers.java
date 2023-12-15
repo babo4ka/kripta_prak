@@ -35,6 +35,7 @@ public class PrimeNumbers {
             s++;
         }
 
+
         Random r = new Random();
         for(BigInteger i = BigInteger.ZERO; i.compareTo(this.rounds) < 0; i = i.add(BigInteger.ONE)){
             BigInteger a = r.rand(BigInteger.ONE, p.subtract(BigInteger.ONE));

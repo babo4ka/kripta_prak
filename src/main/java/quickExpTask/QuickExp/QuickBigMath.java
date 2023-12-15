@@ -39,6 +39,7 @@ public class QuickBigMath {
 
     public static BigInteger bigLog2(BigInteger n){
         String binary = n.toString(2);
+
         int place = 0;
         for(int i=0; i<binary.length();i++){
             if(binary.charAt(i) == '1'){
